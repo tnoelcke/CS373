@@ -1,0 +1,169 @@
+\documentclass[letterpaper, onecolumn,10pt]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{alltt}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{listings}
+
+\usepackage[TABBOTCAP, tight]{}
+
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{natbib}
+
+\begin{document}
+    \begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    \textsc{\Large Oregon State University}\\[1.5cm]
+    \textsc{\Large CS 444}\\[0.5cm]
+    \textsc{\Large Fall 2017}\\[0.5cm]
+    \HRule \\[0.4cm]
+    { \huge \bfseries Writing Assignment 1}\\[0.4cm] % Title of your document
+    \HRule \\[1.5cm]
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+        \emph{Author:}\\
+        Thomas Noelcke
+        \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+        \emph{Instructor:} \\
+        D. Kevin McGrath\\
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \begin{abstract}
+			In this paper I will be discussing the difference between Windows, FreeBSD and Linux. I will examine these three operating systems as it relates to threads, processes and scheduling. I discuss how each operating system implements each of these features. I will also compare and contrast the three operating system pointing out important differences and similarities. I will do this in three sections, The processes section, the threads section and finally the scheduling section.\\
+    \end{abstract}	
+		\end{titlepage}
+		
+		%Prompt:
+			%I want you to look at processes, threads and CPU scheduling. Examine how Windows and FreeBSD implements them, and compare each to Linux. Specifically, how do they differ? how are they the same? Why do you think those similarities or difference exits.
+		
+		\section{Processes}
+			\subsection{Windows}
+			In windows Processes are a very hierarchical structure. At their core they are the resources needed for a process. Processes in windows are composed of different threads that share the same resources such as memory and a call stack. In windows threads also contain a variety of other resources. For instance a process also has an EProcess which is a link to the active process. Windows processes also contain KThreads which are essentially links to the kernel thread. The process also contains many other data structures that keep track of the memory and stack for that process.\cite{Windows}\\
+			
+			As a result of the complicated structure of the windows process the process creation is also complicated. Creating a process in windows requires the operating system to take 7 steps. Firstly, The operating system must validate parameters and convert Windows subsystem flags into their native options. Next, The operating system mush open the image file (.exe file) to be executed inside the process. Thirdly, The operating system must create the windows executive process object. Fourthly, Windows must create the initial thread including creating the stack and context for the thread. Next, The operating system must go through the windows subsystem specific process initialization process. Finally, windows starts execution of the initial thread. Lastly, the context of the new thread is loaded, the address space is initialized and any required dlls are included\cite{Windows}.\\
+			
+			%Put Thread Starting windows process.
+			
+			\subsection{FreeBSD}
+			In FreeBSD processes are fairly strait forward. Every Process will have a PID and the PID of its parent process. Processes also have file descriptors containing the pointers to any open files in that process. Processes also contain resource limits which describe how the process may use the resources provided by the system. Processes also contain a System call vector that maps system call numbers to their actions. They also contain a data structure that keeps track of important statistics about the process while it is running. Finally, each process also contains a thread structure that keeps track of the threads running as part of this process. FreeBSD threads structure also contain a value for the status of a process. A process is either New, Normal which means its runnable, sleeping or stopped or its a zombie.\\
+			
+			In FreeBSD processes can be created using the fork family of functions. FreeBSD uses the parent child model for creating processes. That is that every process has a parent and processes that create new processes are called parents. Thus the processes have a parent child relationship. To create a new process the fork function is often used. This is not the only way to create a new process but we will use it as an example for how processes are created in FreeBSD. Calling fork will cause the operating system to take the following steps. First, It allocates and initializes the child process. Next it duplicates the context in which the parent is running for the child process. Finally, the child process is scheduled so that it may be run. Shown below is a code example demonstrating how a new process may be created using fork on a FreeBSD system\cite{FreeBSD}.\\
+			
+			
+			%starting a new process in FreeBSD.
+			
+			
+			
+			\subsection{Comparison to Linux}
+			Linux and FreeBSD have more in common as it relates to processes than they have different. There are some minor differences however both are very different from windows. In the following paragraphs I will first compare Linux to Free BSD and then compare freeBSD\/Linux to Windows.\\
+			
+			Processes in Linux and FreeBSD are very similar. Both use the parent child model for process creation. Both also use the fork family of functions to create new processes. FreeBSD and Linux also share some similarities in the structure of the threads. That is they both essentially have the same parts. However it should be noted that in Linux There is not a new process state or a normal process state but rather a thread is either running, waiting or stopped. They also share the zombie state\cite{FreeBSD} \cite{Linux}.\\
+			
+			When comparing windows to Linux and FreeBSD there isn't really a whole lot in common between these operating systems regarding processes. The structure of process in Linux when compared to windows is rather simple. In Linux there are several different types of processes but they are all kept track of in the same data structure. In windows it seems there are many different structures needed to keep track of a process. This is due to the layered structure of windows where the same process may exist at multiple different layers of the operating system. Where as the Linux kernel does have a few layers its design is more monolithic. One thing that Linux processes and Windows processes have in common is the parent child relationship between processes. Windows processes also maintain a parent child relationship. Another important difference between Linux and Windows is the process creation process. In windows the process creation process is rather complicated and requires seven steps where as in Linux and FreeBSD starting new processes is fairly simple and strait forward.\cite{Windows}\cite{Linux}.\\
+			
+		\section{Threads}
+			\subsection{Windows}
+				In windows threads are the smallest unit when concerned with scheduling, essentially threads are what are actually scheduled not processes. Threads much like windows processes are a layered structured. This makes the thread structure complicated with many different parts. From a higher level threads in windows contain a thread control bock (KTHREAD), a Process ID an associated EPROCESS, thread start address, Timer information and pending I/O requests. The thread control block can also be broken down into smaller pieces of which can be broken down into smaller pieces. The main point being that threads in windows are hierarchical layered structure.\\
+				
+				Thread creation much like process creation is a seven step procedure. First create thread converts the parameters to native flags and builds a native thread structure. Second, create thread builds list to hold the address of the TEB and the client Id so that the thread has a place to put these items once they are created. Third NtCreateThreadEx is called to create the user mode context, captures the attribute list and calls PspCreateThread. PspCreateThread creates a suspend executive thread object. Fourth CreatThread allocates a activation context, checks if the activation stack needs to be activated and saves a pointer to the activation stack in the TEB. Fifth, Create thread notifies the windows subsystem that a new thread has been created. Sixth, The thread handle and thread ID, which were created in step three, are returned to the caller. Finally, The thread is scheduled for execution unless it was created with the CREATE\_SUSPEND flag\cite{Windows}. Shown below is a code example of creating a new thread in windows using C++\cite{WindowsMan}.\\
+\newpage
+\begin{center}
+\begin{lstlisting}[float, language=C++]
+int _tmain()
+{
+	int myData = 0;
+	DWORD dwThreadId;
+	HANLDE hThread;
+							
+	hThread = CreateThread(
+		NULL,
+		0,
+		MyThreadFunction,
+		&myData,
+		0,
+		&dwThreadId);
+								
+		if(hThread == NULL){
+			ExitProcess(3);
+		}
+								
+		WaitForMultipleObjects(1, hThread, True, INFINITE);
+								
+		CloseHandle(hThread);
+								
+		return 0;
+}
+					
+DWORD WINAPI MyThreadFunction(LPVOID lpParam){
+	/* Do Stuff Here */
+}
+				\end{lstlisting}
+			\end{center}
+			
+			
+			\subsection{FreeBSD}
+			Threads in FreeBSD, like windows, are also the most basic unit of processing. In FreeBSD threads are what are scheduled by the operating system. In FreeBSD however, threads are really just one piece of the general process structure. In the greater process structure threads exist in the thread list. The thread list is just like it sounds a list of threads. Therads in FreeBSD consist of scheduling information, the thread control block, thread kernel stack and the machine dependent thread information. In FreeBSD the kernel stacks are kept small to avoid using to much physical memory. FreeBSD uses Kthreads or kernel threads to implement threads. As for thread creation it is much like process creation only the new thread shares many resources with the parent process Shown below is some example code to show how to start and run a KTHREAD\cite{FreeBsdMan}. It is also important to note that FreeBSD uses a one to one thread model where every thread is mapped to a kernel thread.\cite{FreeBSD}\\
+			\newpage 
+\begin{center}
+\begin{lstlisting}[float, language=c]
+static struct thread *myThread;
+				
+Static struct kthread_desc buf_kp = {
+	"buffdaemon",
+	myFunction,
+	&myThread
+	};
+	
+SYSINIT(myThread, SI_SUB_KTHREAD_BUF, SI_ORDER_FIRST, kthread_start, &buf_kp);
+	
+static void
+myfunction()
+{
+	/* Do some stuff here */ 
+}
+\end{lstlisting}
+\end{center}
+			
+			\subsection{Comparison to Linux}
+			When comparing operating systems in regard to thread structure I found again that FreeBSD and Linux have more in common with each other in comparison to Windows. Linux threads along with FreeBSD threads are smaller structures when compared with windows threads. One important difference between Linux and FreeBSD is that FreeBSD maintains a One to One relationship between threads and kernal threads whereas linux does not. FreeBSD chose to make this design choice to increase speed. Windows threads on the other hand much like windows processes are a monolithic structure. As a result it is very complicated to start up a new thread on the window system. However, It should be noted that Linux, FreeBSD and Windows do share some similarities when it comes to theads. First off in all of these operating system threads are the most atomic unit as far as scheduling is concerned. Secondly, threads share resources from the parent process that created them.\cite{Windows}\cite{FreeBSD}\cite{Linux}.\\
+			
+			When comparing operating system in regards to thread creation, again Linux and FreeBSD share many similarities. The Windows process for creating threads is much more complicate that the how FreeBSD and Linux create threads. Threads in Linux and FreeBSD are much simpler to create because they share many of the same resources as the process that created them. It should be noted however that FreeBSD only copies the top frame of the parent process when creating new threads. This was in an attempt to reduce physical memory usage. I am unaware if Linux uses the same feature.\cite{Windows}\cite{Linux}\cite{FreeBSG}.\\
+				
+		
+		\section{CPU scheduling}
+			\subsection{Windows}
+			The Windows scheduler is a priority-driven, preemptive scheduling system. Meaning that the highest priority runnable processes always run. In windows threads are allowed to run for a predetermined about of time called a quantum. After the thread has run for a quantum the thread will be paused and another process will be allowed to execute. However, a thread may not be allowed to complete execution before it gets interrupted by a high priority thread. In the Windows system you can also set up threads to run on a particular processor this is called processor affinity. It should be noted that in Windows there is no central scheduler but rather the scheduler is spread through out the windows Kernel. The actual code that preform the act of scheduling threads are called the dispatcher. A thread might get dispatched because A thread becomes ready to execute, A thread Leaves the running state because it's quantum ends, a thread's priority changes or because a threads processor affinity changes.\\
+			To manage what processes get access to the processor windows uses priority levels 0 through 31. Level 0 is used for the system level priority. levels 1 - 16 are variable level priorities meaning that these levels are used for various different things. Levels 16 through 31 are used for real-time levels. It should also be noted that processes will also have interrupt levels as well and these levels correspond to integers between 0 and 31.\cite{Windows}\\
+			
+			\subsection{FreeBSD}
+				In FreeBSD there are actually two different schedulers. There is the default scheduler which schedules user threads. This scheduler is designed to allow interactivity type threads higher priority than longer lasting jobs such as batch jobs. This allows interactive jobs that actually have the lowest amount of time on the CPU. This design is intentional and is designed to reduce thrashing. Thrashing is what happens when memory is in short supply and the operating system stops running users threads in order to maintain the system. In general processes are ranked by how much IO that they preform along with the amount of computation they will need to preform. In FreeBSD child processes inherit the same priority level as the parent process. This is intended to stop processes circumventing their priority level by spawning many different small process that do little work\cite{FreeBSD}.\\
+				In FreeBSD there is also a real time scheduler. This scheduler is primarily used for system processes that have strict deadlines for when it must be completed. These processes are not subject to the same priority levels as standard user threads. These threads are actually placed in a separate queue from standard user threads and are scheduled completely separately from user processes.\cite{FreeBSD}.\\
+					
+			\subsection{Comparison to Linux}
+				Again Linux and FreeBSD share many similarities in regards to process scheduling. Both have a centralized scheduler that schedules the processes. Also both have relatively simple scheme for managing process priority. However, It should be noted that both Linux and Windows implement a preemptive scheduling mechanism where as FreeBSD does not. It should also be noted that Windows preemptive scheduling is less strict than Linux as a process is not guaranteed a certain amount of time on the CPU and may be interrupted at any time. Another attribute unique to windows is the lack of a central scheduler rather the code that dispatches processes is spread through out the kernel. Finally, All three operating systems provide support for real time scheduling\cite{FreeBSD}\cite{Linux}\cite{Winodws}.\\
+				
+		\newpage	
+		\section{Bibliography}
+		\bibliography{References}
+		\end{document}

@@ -63,18 +63,22 @@
 		    
 		    \subsection{Types of Malware} We then moved on to talking about what types of malware there are. There are viruses, Parasitic and polymorphic along with Worms. Interestingly, polymorphic malware is malware that mutates and rewrites the code as it is trying to be detected. This type of malware is less common and is probably written by some sort of government or other large organization. There are also Trojans of various types. These often take advantage of some sort of back door. Finally, there are also potentially unwanted programs. These are programs that may look real but end up being unwanted. During this section of the lecture we also discussed the idea that the weakest point in a system from a security standpoint is the user.\\
 		    
-		    \subsection{Infection Vectors}
+		    \subsection{Infection Vectors} At this point in the lecture we started talking about how malware gets on to users systems. Malware is put on user systems via USB sticks, mobile apps, drive-by downloads, pdfs and office files. Its also important to note that malware can be written in Microsoft Office Macros. In fact this was such a problem that Microsoft was force to release an update to Office that forced macros to be off by default.\\
+		    
+		    \subsection{Handling Malware} Another important topic we covered this week during lecture is handling malware. In this section we talked about some good practices when handling malware. We learned that you should always transport malware in an inactive state. It is also important to lock down the development environment using anti-malware software, a firewall and using policies to prevent mishaps. For the purposes of this class we are using a security hardened VM hosted by the university. This VM will prevent the malware from doing any thing that it really shouldn't be doing.
+		    
 		    
 		    \subsection{Malware compression} One thing I learned this week that I found really interesting is packing code. Hackers to this to disguise the malware. This can make it harder to figure out what the malware does and makes it much more difficult to detect. To do this the hackers use packers. There are many different packers out there however, one of the more popular packers is UPX. This is a handy bit of information because it means that we can also decompoile the code and view the code more easily. There are also some packers that you won't be able to upack using UPX. There are also tools that allow us to crack this code as well.\\
-		
-		\section{Lab}
-		
+
+        \section{lab} This week in lab we got the chance to play with real live malware. This included using various tools to observe the malware. For more details please see the Lab 1 write up.\\
+
 		\section{vocabulary}
 		    Below is a list of important terms we learned this week during lecture.\\
 		    \begin{itemize}
 		        \item \textbf{Malware:} any piece of software that attempts to preform unwanted malicious operations.\\
 		        \item \textbf{Patient Zero:} first computer infected in a targeted attack often an APT.\\
 		        \item \textbf{Packer:} a Piece of software that will compress or encrypt a piece of software.\\
-		        \item \textbf{Goat: } A machine or computer that you sacrifice to observe a piece of malware that is running. This is typically done in a VM with some special software running to prevent the malware from actually doing any thing malicious.\\
+		        \item \textbf{Goat:} A machine or computer that you sacrifice to observe a piece of malware that is running. This is typically done in a VM with some special software running to prevent the malware from actually doing any thing malicious.\\
+		        \item \textbf{ATP: } Advanced Persistent Threat. This is a targeted attack by some sort of large organization that has a clear and targeted objective.\\
 		    \end{itemize}
 		\end{document}

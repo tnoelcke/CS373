@@ -71,9 +71,24 @@
             
             \subsection{legal stuff} For the most part this stuff this isn't super interesting but there are some things its important to note that you can't do. If you find passwords for accounts while investigating you are not allowed to log into those accounts. That is strictly a no go with out getting a warrant from a Judge.\\
             
-            \subsection{Incidence Response} This is another area in Forensics is responding to incidents. Having a team for this is generally a luxury. Some companies have them but often they are thrown together teams. Often these teams aren't training enough. It is important to ensure that you are training a lot if you are doing this type of work as you want to make sure that things go wrong in training rather than during a real attack. When doing IR and forensics it is important to ensure that you have the correct access level to gather information.\\ 
+            \subsection{Incidence Response} This is another area in Forensics is responding to incidents. Having a team for this is generally a luxury. Some companies have them but often they are thrown together teams. Often these teams aren't training enough. It is important to ensure that you are training a lot if you are doing this type of work as you want to make sure that things go wrong in training rather than during a real attack. When doing IR and forensics it is important to ensure that you have the correct access level to gather information. While doing IR it is important to try to catch threats early. Its possible to catch information early in different firewall logs along with in other system logs. Is is especially true for ATP attacks. However, it may be difficult to do this as there will be many logs to sift through.\\
             
-            \subsection{} 
+            \subsection{Locard's Exchange Principle} When any two objects come into contact, there is always transference of material from each object onto the other. In other words, you cant interact with a live system with out leaving some sort of trace on that system. This is part of why it is so important to document every thing that you do on a system while you are investigating.
+            
+            \subsection{Order of Volatility} Below is the order of volatility.
+            \begin{itemize}
+                \item System Memory
+                \item Temporary File Systems (swapfile/paging file)
+                \item process table and Network Connection
+                \item Network routing information & ARP cache
+                \item Forensics Acquisition of Disks
+                \item Remote logging and Monitoring data
+                \item Physical configuration & network topology
+                \item backups
+            \end{itemize}
+            This list is important because it will dictate what actions you take while doing an investigation. You should seek to gather the most volatile information first and the least volatile information later.\\
+            
+            \subsection{Practical tips} When investigating machines there are some things that you shouldn't do. Firstly, It is important to have your tools installed on some sort of external media. This should then be run from the external media. You should never install this software on the suspects machine. as you are modifying evidence. When storing other evidence such as memory dumps or registry logs, you should also make sure not to store these on the suspects machine. There are several options for doing this such as, a network share or some sort of other external media. This ensures that you are preserving the suspects machine.\\
 		
 		\section{Lecture Topics}
 		

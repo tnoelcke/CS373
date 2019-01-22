@@ -54,31 +54,31 @@
 		
 		
 		\section{Overview}
-		    This week we learned about the basics of malware. Through out the lectures this week we learned import terminology. In the first part of this write up I will talk about the topics that I found interesting during the lectures. In the section section I will talk about the lab and what I learned during the lab. In the last section of the write up I will create a list of important terms I learned during the lecture. This last section is mostly for the purposes of reference.\\
+        This week we are diving deeper into a different area of malware. Last week we learned about malware research where we set off some malware and tried to figure out what it did.This week we are learning about Forensics in malware. In this section I will discuss sections from the lecture that I found interesting during the lectures this week.
+        
+            \subsection{Forensics Basics}
+            The number one thing that the lecturer wanted to say was that safety is the most important part. If you are ever asked to investigate something in an area that is unsafe just to pull the plug and take it some where safer. This does have some problems as this will cause the memory to dump and may cause some data to be lost. If you can do the memory analysis while its safe it is a good idea. There are also several over types of investigation that we can also do. This includes hard drive analysis, postpartum analysis, analysis of gaming systems and other types of analysis. Generally, when doing an investigation there are three stages of an investigation Evidence acquisition, Investigation and analysis and reporting results. During the first of these three stages the main challenge is ensuring that things are safe while trying to do live analysis. The second stage is the stage that we are going to dig into this week. The final stage the main challenge is reporting what happened on a system in a way that people with non technical people can understand. There are also four principles you must always adhere to: 
+                \begin{itemize}
+                    \item Minimise data loss
+                    \item Record everything
+                    \item Analyze all data collected (evidence)
+                    \item Report findings
+                \end{itemize}
+            It is also important to note that it is important to report the time when things happened, including the system time.\\
+            
+            \subsection{Evidence}
+            Evidence is any thing you can use to prove or disprove a fact. For the purposes of computer forensics, the different types of evidence that can be found at many different layers. These may include network, operating system, databases and applications, peripherals, removable media, and human testimony. It is important to use Triage when investigating. This means to prove in many different ways that some thing is true or untrue. One of the challenges you may face while investigating has to do with the sheer size of the media that is out there. You can image that with a 1 or 2 TB drive how much data that could be placed on that disk. There are some tools that we can use to help move this along such as using the checksums for files and comparing them to other known files from other cases. This can also help limit exposure to uncomfortable material. Another challenge that you may face during an investigation is dealing with SSDs. When getting evidence from some one with a checksum you should verify that the checksum is correct. It is also common to use write blockers to ensure that data cannot be written to a hard disk that you are trying analyze. Write blockers are cool.\\
+            
+            \subsection{legal stuff} For the most part this stuff this isn't super interesting but there are some things its important to note that you can't do. If you find passwords for accounts while investigating you are not allowed to log into those accounts. That is strictly a no go with out getting a warrent from a Judge.\\
 		
 		\section{Lecture Topics}
-		    \subsection{Why Does Malware Exist} A the beginning of this week we started off by talking about why malware exists. We determined that malware primarily exists to cause harm or destruction, for monetary reasons, political gain and to steal intellectual property. We also determined that there are a wide variety of people who write malware. This includes governments, lone wolf hackers, groups of hackers, companies, and terrorist organizations. Essentially there are a wide variety of people who might write malware for a wide array of reasons.\\
-		    
-		    \subsection{History of Malware} We then moved on to talking about malware research basics. We started with a brief history of malware and malware research. This included how malware was stored. It was originally stored and distributed on floppy disks. At one point the worlds leading malware database was able to be contained in cabinet. Today there are many many terabytes of different malware samples. The endpoint protection industry has also become a 10 billion dollar industry.\\
-		    
-		    \subsection{Types of Malware} We then moved on to talking about what types of malware there are. There are viruses, Parasitic and polymorphic along with Worms. Interestingly, polymorphic malware is malware that mutates and rewrites the code as it is trying to be detected. This type of malware is less common and is probably written by some sort of government or other large organization. There are also Trojans of various types. These often take advantage of some sort of back door. Finally, there are also potentially unwanted programs. These are programs that may look real but end up being unwanted. During this section of the lecture we also discussed the idea that the weakest point in a system from a security standpoint is the user.\\
-		    
-		    \subsection{Infection Vectors} At this point in the lecture we started talking about how malware gets on to users systems. Malware is put on user systems via USB sticks, mobile apps, drive-by downloads, pdfs and office files. Its also important to note that malware can be written in Microsoft Office Macros. In fact this was such a problem that Microsoft was force to release an update to Office that forced macros to be off by default.\\
-		    
-		    \subsection{Handling Malware} Another important topic we covered this week during lecture is handling malware. In this section we talked about some good practices when handling malware. We learned that you should always transport malware in an inactive state. It is also important to lock down the development environment using anti-malware software, a firewall and using policies to prevent mishaps. For the purposes of this class we are using a security hardened VM hosted by the university. This VM will prevent the malware from doing any thing that it really shouldn't be doing.
-		    
-		    
-		    \subsection{Malware compression} One thing I learned this week that I found really interesting is packing code. Hackers to this to disguise the malware. This can make it harder to figure out what the malware does and makes it much more difficult to detect. To do this the hackers use packers. There are many different packers out there however, one of the more popular packers is UPX. This is a handy bit of information because it means that we can also decompoile the code and view the code more easily. There are also some packers that you won't be able to upack using UPX. There are also tools that allow us to crack this code as well.\\
-
-        \section{lab} This week in lab we got the chance to play with real live malware. This included using various tools to observe the malware. For more details please see the Lab 1 write up.\\
+		
+		\section{Lab}
 
 		\section{vocabulary}
 		    Below is a list of important terms we learned this week during lecture.\\
 		    \begin{itemize}
-		        \item \textbf{Malware:} any piece of software that attempts to preform unwanted malicious operations.\\
-		        \item \textbf{Patient Zero:} first computer infected in a targeted attack often an APT.\\
-		        \item \textbf{Packer:} a Piece of software that will compress or encrypt a piece of software.\\
-		        \item \textbf{Goat:} A machine or computer that you sacrifice to observe a piece of malware that is running. This is typically done in a VM with some special software running to prevent the malware from actually doing any thing malicious.\\
-		        \item \textbf{ATP: } Advanced Persistent Threat. This is a targeted attack by some sort of large organization that has a clear and targeted objective.\\
+		        \item \textbf{Evidence: } Any thing you can use to prove or disprove a fact.\\
+		        \item \textbf{Triage: } Can I proof in multiple different ways? Such as log files, registry, database entries, or sql log files.\\
 		    \end{itemize}
 		\end{document}

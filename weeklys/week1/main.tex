@@ -34,7 +34,7 @@
     \textsc{\Large Oregon State University}\\[1.5cm]
     \textsc{\Large CS 373}\\[0.5cm]
     \textsc{\Large Winter 2019}\\[0.5cm]
-    \textsc{\Large Week 1}\\[0.5cm]
+    \textsc{\Large Week 2}\\[0.5cm]
     \HRule \\[0.4cm]
     { \huge \bfseries Weekly Write Up}\\[0.4cm] % Title of your document
     \HRule \\[1.5cm]
@@ -55,6 +55,8 @@
 		
 		\section{Overview}
         This week we are diving deeper into a different area of malware. Last week we learned about malware research where we set off some malware and tried to figure out what it did.This week we are learning about Forensics in malware. In this section I will discuss sections from the lecture that I found interesting during the lectures this week.
+        
+        \section{Lecture Topics}
         
             \subsection{Forensics Basics}
             The number one thing that the lecturer wanted to say was that safety is the most important part. If you are ever asked to investigate something in an area that is unsafe just to pull the plug and take it some where safer. This does have some problems as this will cause the memory to dump and may cause some data to be lost. If you can do the memory analysis while its safe it is a good idea. There are also several over types of investigation that we can also do. This includes hard drive analysis, postpartum analysis, analysis of gaming systems and other types of analysis. Generally, when doing an investigation there are three stages of an investigation Evidence acquisition, Investigation and analysis and reporting results. During the first of these three stages the main challenge is ensuring that things are safe while trying to do live analysis. The second stage is the stage that we are going to dig into this week. The final stage the main challenge is reporting what happened on a system in a way that people with non technical people can understand. There are also four principles you must always adhere to: 
@@ -80,19 +82,23 @@
                 \item System Memory
                 \item Temporary File Systems (swapfile/paging file)
                 \item process table and Network Connection
-                \item Network routing information & ARP cache
+                \item Network routing information and ARP cache
                 \item Forensics Acquisition of Disks
                 \item Remote logging and Monitoring data
-                \item Physical configuration & network topology
+                \item Physical configuration and network topology
                 \item backups
             \end{itemize}
             This list is important because it will dictate what actions you take while doing an investigation. You should seek to gather the most volatile information first and the least volatile information later.\\
             
             \subsection{Practical tips} When investigating machines there are some things that you shouldn't do. Firstly, It is important to have your tools installed on some sort of external media. This should then be run from the external media. You should never install this software on the suspects machine. as you are modifying evidence. When storing other evidence such as memory dumps or registry logs, you should also make sure not to store these on the suspects machine. There are several options for doing this such as, a network share or some sort of other external media. This ensures that you are preserving the suspects machine.\\
             
-            \subsection{RAM} We get get lots of different things out of ram. We can get things like all running processes, cryptography information, passwords, and commands run on the command line. Memory Dumps are one of the most powerful tools you can use to see what was happening in a system and any given time. This can also be used for investigation into malware attacks. There are also many important things about memory and how it works at the software level and physical level that we will talk about in later lectures.\\  
-		
-		\section{Lecture Topics}
+            \subsection{RAM} We get get lots of different things out of ram. We can get things like all running processes, cryptography information, passwords, and commands run on the command line. Memory Dumps are one of the most powerful tools you can use to see what was happening in a system and any given time. This can also be used for investigation into malware attacks. There are also many important things about memory and how it works at the software level and physical level that we will talk about in later lectures.\\
+            
+            \subsection{Volatility} This week in class we learned about a new tool called Volatility. This allows us to examine many different things in a memory dump. There are also many different plugins for this tool. This will allow us to examine many different things in memory. This is piratical because this will help us find things in memory that we would miss if we were just viewing raw memory. We can also derive what operating system the device is from using this tool. This can be handy because some of the commands wont be able to run on certain operating systems.\\
+            
+            \subsection{Timeline creation and Analysis} Another thing we learned about this week that is very important time line creation and Analysis. This is the process of putting together a timeline of what happened on a suspects machine or on a machine that may have been attached. There are many tools that can be used to do this. One part of this that is very important is the mft file or the master table file. This will allow us to put together a time line of what happened with all the files on the target machine. We can use volatility to view these files. There are also a number of tools that will allow us to import this file and view it in a nicely formatted way.\\
+            
+            \subsection{Data Recovery} This is also know as data carving. This is when we recover data on some piece of media that was deleted. The reason that this can be done is because when you delete something its not really deleted. Really what's happening is that some flags are changed such that this space becomes available to be written over. However, the data is still there and can be read if you know how to read it. The only way data is truly deleted is that it is written over, wiped, or destroyed with a 12 gauge. This will allow us to recover all sorts of different media. There are even tools that can recover deleted photos. Some times its possible that you it's not possible to recover the whole file. There are tools to handle this that will allow you to recover part of a file.\\
 		
 		\section{Lab}
 
@@ -101,5 +107,7 @@
 		    \begin{itemize}
 		        \item \textbf{Evidence: } Any thing you can use to prove or disprove a fact.\\
 		        \item \textbf{Triage: } Can I proof in multiple different ways? Such as log files, registry, database entries, or sql log files.\\
+		        \item \textbf{mft: } Master file table. This file allows you to see the history of what happened to the files.\\
+		        \item \textbf{Data Carving: } Recovering deleted files from any type of media.\\
 		    \end{itemize}
 		\end{document}

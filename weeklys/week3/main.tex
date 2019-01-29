@@ -56,12 +56,31 @@
         This week we are diving deeper into malware defense. This week we will dive in to topics such as malware defense, infiltration vectors and opportunities where we can defend against attacks. Below I will discuss topics I found interesting during lecture. I will also discuss the lab and what I learned during the lab. Finally, I will list out new terms that I learned this week along with a definition in my own words.\\
 			
         \section{Lecture Topics}
-        
-        \section{Lab}
+            
+            \subsection{How computers get infected?}
+            We started off the lecture by talking about how people get infected. Often times the point of contact is through Email, IM, Malvertising, poisoned search results. It's also possible to get infected by searching for software that you are trying to get but search results take you some where else. It's also possible that you get a infected through a watering whole. This is where some sort of interesting content targeted at certain people and they go there and look at the material. Physical access is also another way that people can become infected.\\
+            
+            \subsection{How to do get the code to run?}
+            Once you have access to the computer how to do you get the code that you want to be run to run? Once common way this can be done with with auto runs. These are programs that are run automatically when you insert some sort of media. Another possible way this might happen is through an installer that the user is installing another piece of software. Document exploits are one of the main ways that code is run on users machines. This is commonly called an exploit. Exploitation has a wide array of different exploits that can be used. Another way this can be done is through a redirect where the exploit is not hosted at parent site but a redirect is used to take the user to the compromised site. Finally, It's also possible to trick the user into running the code you want to be run. This can be done in a variety of ways through a bunch of different sources. Outdated software is also another way in which a machine may become infected.\\
+            
+            \subsection{Once we are in what do we do?}
+            Once installed the malware will likely try to replicate or blend in. This is often done by installing something in system 32 or mimicking the svchost process. These programs might also change time stamps so that it doesn't look like it was just installed. Bootkits and Rootkits are another way that malware might try to blend in. This method is more of a way to hide rather than blend in. Malware will also try to persist it self. This can be done by the malware adding it self to the start up list. There are many ways to force a program to run on start up. Side load attacks are another way to exploit a system. This is done by replacing dll's that go with legitimate installers. This causes the installer to call the wrong code. Using the proxy settings to run the user through your proxy instead of the site they intended to go. Ultimately, the goal is to use the malware to collect information like passwords or documents.\\
+            
+            \subsection{First Contact and Defense}
+            Now that we know how computers are infected and how attacks are carried it we can start to look at this problem through the lens of what can we do to defend against these attacks? The best thing we can probably do is to prevent first contact with the user. There are many things that your browser already does to try to help with this. For instance the browser has a list of blacklisted domains and sites that will cause a warning to pop up if you try to visit one of these sites. Another way we can help protect the user is to prevent the user from taking actions that they shouldn't be. For instance if the user, such as a teller, shouldn't be allowed to use a USB stick then don't give the user physical access to a drive. It also helps to polices in place that help prevent the user from doing things they shouldn't be doing. Script blockers are another way that we can prevent the user from being exposed to malicious scripts. It should be known that this may hurt the user experience. Firewalls are another method by which the user can be protected. Its important to know that the tools that are highly effective will lead to poor user experience.\\
+            
+            \subsection{The Solution}
+            So if the ways that are effective hurt our users, what do we do to better protect our users with out destroying their experience? The real solution is to use a layered approach. This means that we will use some of the above methods in less extreme forms. This layered method will make it much more difficult for hackers to exploit users. It's also important to note that there are things we can do after first contact to minimize the risk. An example of this is security system might quarantine a file that it may suspect is bad. It's also possible that your security system may just delete a a file that is bad.\\
+            
+            \subsection{Behavioral Security}
+            Today, file scanning is one way that we are protecting users. This is by scanning the files and flagging files that are suspicious. This approach does a lot of good for users but some times this is not enough. It is possible to take software and get it to run in memory with out having to physically save a file to disk. This means that the AV scanning with not catch this attack. Another way to catch this attack is to focus on the behavior of these processes. If a process is from a known source and is from a file we pretty much leave it alone. However, If there is code running in memory that does not come from a file we need to pay close attention to what that process is doing and shut it down if it does any thing suspicious.\\
+            
+            \subsection{}
 
         \section{Terms}
             \begin{itemize}
-                \item Stuff and things
+                \item \textbf{First Contact:} The first contact that hacker has with a user that causes them to become infected with some sort of malware.\\
+                \item \textbf{}
             \end{itemize}
 
 		\end{document}

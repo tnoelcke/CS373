@@ -75,7 +75,46 @@
             \subsection{Behavioral Security}
             Today, file scanning is one way that we are protecting users. This is by scanning the files and flagging files that are suspicious. This approach does a lot of good for users but some times this is not enough. It is possible to take software and get it to run in memory with out having to physically save a file to disk. This means that the AV scanning with not catch this attack. Another way to catch this attack is to focus on the behavior of these processes. If a process is from a known source and is from a file we pretty much leave it alone. However, If there is code running in memory that does not come from a file we need to pay close attention to what that process is doing and shut it down if it does any thing suspicious.\\
             
-            \subsection{}
+            \subsection{Layers of Security}
+            Below is a list of the layers of security that are employed today to protect users from being attacked.
+            \begin{itemize}
+                \item Network Firewall
+                \item Network Intrusion Prevention
+                \item Message Reputation
+                \item Network Reputation
+                \item Web Reputation
+                \item Host Firewall
+                \item Host IPS
+                \item Access Control
+                \item Anti-Malware 
+            \end{itemize}
+            Its important to note that all of these systems require the users to actually use these systems in order for them to work. One example is ransomware attacks. The most common way to defend against this is to do regular backups. How often do people actually do this? It's important to note that often these systems are often from different vendors and usually don't communicate with each other. This is going to increasingly important as time goes on. All of these systems are content driven and require updates. This means that by the time you get the updates the threat has already evolved.\\
+            
+            \subsection{Layers of a Security System}
+            Below is a list of common components of a security system.
+            \begin{itemize}
+                \item Management Server - This is a server that push updates and manages different parts of the security systems.\\
+                \item Scanner Core - This the part of the system that is responsible for the actual scanning of files.\\
+                \item Engine - The engine is responsible for consuming the content.\\
+                \item Content - This is the content that the system is looking for or other information that allows it to detect a threat.\\
+            \end{itemize}
+            
+            Below is a list common features that a security suite might provide.
+            \begin{itemize}
+                \item Traditional File Scanning (OAS, ODS)\\
+                \item Registry & Cookies\\
+                \item Cloud Scanning\\
+                \item memory Scanning\\
+                \item Scripts\\
+                \item Heuristics\\
+                \item Decomposition\\
+                \item Configuration: Exclusions, sensitivity, reporting, ect.\\
+            \end{itemize}
+            
+            \subsection{YARA}
+            This is the swiss army knife for malware researchers. This allows you to express different patters as expressions. This allows people to write their own content for the purposes of defending against malware. Strings are expressed as strings as you would expect in most languages. Byte patterns are also used in YARA. There are a verity of different logic opperators that allow you to do some different things with the byte patterns.\\
+             
+
 
         \section{Terms}
             \begin{itemize}

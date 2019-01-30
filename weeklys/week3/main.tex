@@ -88,6 +88,7 @@
                 \item Access Control
                 \item Anti-Malware 
             \end{itemize}
+            
             Its important to note that all of these systems require the users to actually use these systems in order for them to work. One example is ransomware attacks. The most common way to defend against this is to do regular backups. How often do people actually do this? It's important to note that often these systems are often from different vendors and usually don't communicate with each other. This is going to increasingly important as time goes on. All of these systems are content driven and require updates. This means that by the time you get the updates the threat has already evolved.\\
             
             \subsection{Layers of a Security System}
@@ -117,15 +118,26 @@
             Good YARA signatures are still generally written by humans. Machine learning is starting to play a part in writing signatures but often times they are still hand crafted. This is because we want to make the signatures small and make sure that they have meaning. We can use hashes of files along with fuzzy hashes to find malicious files. Its also important to note that these signatures can also be applied to memory scans.\\
             
             \subsection{Software Signing}
-            We also talked about code signing. The purpose of code signing is to verify the binary that you are looking at came from a given source. This doesn't verify that the code isn't malicious. This only verifies that this code was not tampered with between the source sending it and you receiving it. In today's world we are really past using just the signature alone to determine that software is good or bad. We are now on to signature reputation. This means we are looking at who issued the signed software and using the reputation of that entity to determine if that software is worth trusting.\\ 
-
-        \section{Yara Lab}
-        
+            We also talked about code signing. The purpose of code signing is to verify the binary that you are looking at came from a given source. This doesn't verify that the code isn't malicious. This only verifies that this code was not tampered with between the source sending it and you receiving it. In today's world we are really past using just the signature alone to determine that software is good or bad. We are now on to signature reputation. This means we are looking at who issued the signed software and using the reputation of that entity to determine if that software is worth trusting.\\
+            
+            \subsection{automation}
+            There are many reasons why we want to automate some of the AV signature generation and processing of malware samples. When there are millions of samples being generated in a day it's hard not to use automation to process all that information. Some advantages of automation are that the computers make less mistakes, computers can handle more volume and computers can run 24/7 365. Machine learning is currently in use to help determine weather AV rules are good or bad. It is also used to help determine weather or not a new rule should be pushed to the cloud. However, there are also some problems with machine learning. The machine learning approach really fails to deal with the white code rather than the malicious code. The automation may also write cumbersome rules and may cause results that are complicated or that don't make sense. Another problem with automation is that it is out of context. Meaning that if a piece of malware is run in an automated way this is not the real world.\\
+            
+            \subsection{cuckoo}
+            This is another tool that allows us to spoof the internet and serve files while closely monitoring what is happening. This is done by running cuckoo on a host machine that then monitors guest machines that then get run through a virtual network run by Cuckoo. The guest machines that are running the malware also report the behavior of the malware to Cuckoo. Below is a list of some items that cuckoo can collect for us.\\
+            \begin{itemize}
+                \item Traces of win32 api calls\\
+                \item Files being created, deleted and downloaded during execution.\\
+                \item Memory dumps of the malware processes.\\
+                \item Network traffic and traces.\\
+                \item screen shots of windows desktop taken during the execution.\\
+                \item full memory dumps of the machines.\\
+            \end{itemize}
         
         \section{Terms}
             \begin{itemize}
                 \item \textbf{First Contact:} The first contact that hacker has with a user that causes them to become infected with some sort of malware.\\
-                \item \textbf{}
+                \item \textbf{IPS:} Intrusion Prevention System.\\
             \end{itemize}
 
 		\end{document}

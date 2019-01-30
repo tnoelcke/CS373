@@ -112,10 +112,16 @@
             \end{itemize}
             
             \subsection{YARA}
-            This is the swiss army knife for malware researchers. This allows you to express different patters as expressions. This allows people to write their own content for the purposes of defending against malware. Strings are expressed as strings as you would expect in most languages. Byte patterns are also used in YARA. There are a verity of different logic opperators that allow you to do some different things with the byte patterns.\\
-             
+            This is the swiss army knife for malware researchers. This allows you to express different patters as expressions. This allows people to write their own content for the purposes of defending against malware. Strings are expressed as strings as you would expect in most languages. Byte patterns are also used in YARA. There are a verity of different logic operators that allow you to do some different things with the byte patterns.\\
+            
+            Good YARA signatures are still generally written by humans. Machine learning is starting to play a part in writing signatures but often times they are still hand crafted. This is because we want to make the signatures small and make sure that they have meaning. We can use hashes of files along with fuzzy hashes to find malicious files. Its also important to note that these signatures can also be applied to memory scans.\\
+            
+            \subsection{Software Signing}
+            We also talked about code signing. The purpose of code signing is to verify the binary that you are looking at came from a given source. This doesn't verify that the code isn't malicious. This only verifies that this code was not tampered with between the source sending it and you receiving it. In today's world we are really past using just the signature alone to determine that software is good or bad. We are now on to signature reputation. This means we are looking at who issued the signed software and using the reputation of that entity to determine if that software is worth trusting.\\ 
 
-
+        \section{Yara Lab}
+        
+        
         \section{Terms}
             \begin{itemize}
                 \item \textbf{First Contact:} The first contact that hacker has with a user that causes them to become infected with some sort of malware.\\

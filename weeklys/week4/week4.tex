@@ -78,6 +78,40 @@
 		    \subsection{I'm Calling it in this week}
 		    I regret to inform who ever may be reading this that this write has to end early. I've been fighting the flu all weekend and it has caused me to get behind. So rather than let that derail me I took what notes I could and turned this write up in. I full accept that I may get a poor score on this write up but at least I won't get behind on subsequent write ups. I do have to say though it makes me sad I had to get sick now because this was probably one of the topics I was most interested in. I plan to finish the lectures and will probably even add more notes to this write up.\\
 		    
+		    \subsection{Exploits}
+		    Generally, Exploits are carried out by putting some sort of input into the system. There are several different types of exploits that we are going to explore this week. One of which is a buffer overflow or past memory read error. The goal is then to use that to execute code. Its also possible to write to the stack once the memory has already been freed we will look at this one more in detail later. We also spent some time looking a the buffer overflow type of exploit. Its also important to note that the input of piece of code that actually causes the exploit are called payloads. The thing that actually cause this to get executed is called a venerability trigger.\\
+		    
+		    \subsection{Metasploit}
+		    This is a program that is designed to aid pros doing security exploits. However, it is abused by hackers. The payload can be changed out and this allows hackers to see how an exploit can be taken advantage of.\\
+		    
+		   \subsection{The Stack}
+		   The stack is a state mechanism that ensures that we can get from point a to point b programatically. This is how the computer keeps it road map while executing code. When you start a program here is what happens on the stack. We have all the function params that get passed to the main function. Main needs to know how to get back to the program before it. To do this is saves the return address of the previously called function. We also have several different regeisters we use to keep track of different points in code. We do this using EBP (Base Pointer) and ESP (Points to top of the stack). 
+		   \begin{itemize}
+		       \item Function Prolog - Save the state of the function, we do that by saving EBP.\\
+		       \item Then ESP is incremented to account for the new value on the stack. ESP and EBP will now be pointing in the same place.\\
+		       \item We may also move the stack pointer to make room for local variables.\\
+		       \item We then push the function paramaters to the top of the stack.\\
+		       \item We then call the step function which pushes the return address.\\
+		       \item We then jump to the next function we are going to call.\\
+		       \item we then execute the function prolog (push ebp).\\
+		       \item We are now going to assume the rest of the sack and move to function tare down.\\
+		       \item We first restore the base pointer.
+		       \item we then take the return value and put it EIP.\\
+		       \item We then return a value by putting in EIP and remove the function params off the stack.\\
+		       \item decrement ESP.\\
+		   \end{itemize}
+		   We shoud have a good idea how the stack works in general for how functions are built on the stack and deconstructed.
+		   
+		   
+		   \subsection{winDB tip}
+		   To view the stack i winDB we should use the K command.
+		   
+		   \subsection{Stack overflow}
+		   What happens when we copy a value that is to large in to a smaller value? The computer is going to try to copy those values. What will happen is that the computer will do what you ask it to. This will cause it to start to write over the return value and previous EBP value. At some point we will just start to overwrite every thing else. At some point we may reach the stack base and cause an access violation. Memcopy isn't a terrible thing but the code on the screen is not well thoughtout. So what happens now? We pop ebp and now it points to a garbage value. Now we do our return value which tells the program where to execute next. Now the program is pointing to a garbage value. Now we have full control. We can now point execution at any piece of code that we want.\\
+		   
+		   \subsection{How do we use this to execute bad code?}
+		   Right now we have garbage in the return value but how to use this to execute our code? The first thing we need to do is Triage. This is essentially looking at what is happening from a high level. This will help us evalute what we can do. In this instance we have full control over the stack. The next question is what is on the stack currently? We want to be able to overwrite EIP. How many bytes between our buffer and the return address. How are we going to do this? Javascript. Wait what? This is all done through the browser. We are going to write our exploits in JS. We ran our JS and saw it in the debugger. The next question is to figure out what the offset is.\\
+		    
 		
 		
 		\section{Terms}

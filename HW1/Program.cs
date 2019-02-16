@@ -100,7 +100,32 @@ namespace HW1
         }
 
         static void handleModules(string[] args){
+            if(args.Length <= 1){
+                Console.WriteLine("The pm command requires an event Id");
+                Console.WriteLine("pm <processId>");
+            } else {
+                int processId = 0;
+                if(Int32.TryParse(args[1], out processId)){
+                    listModules(processId);
+                } else {
+                    Console.WriteLine("p command requires a valid process id, " + args[1] + "is not a valid process id");
+                }
+            }
+        }
 
+        static void listModules(int processId){
+            try {
+                Process myProcess = Process.GetProcessById(processId);
+                Console.WriteLine("-------------------------------------------------------------------------------------------------");
+                Console.WriteLine("| Modules Name \t|\t Memory Size \t|\t File Name |");
+                foreach(ProcessModule m in myProcess.Modules) {
+                    Console.WriteLine("| " + m.ModuleName + "\t|\t\t" + m.ModuleMemorySize + "\t|\t\t" + m.FileName + " |");
+                }
+                Console.WriteLine("-------------------------------------------------------------------------------------------------");
+            } catch(Exception e) {
+                Console.WriteLine("Could Not find Process Id " + processId);
+                Console.WriteLine("Error: " + e.ToString());
+            }
         }
 
         static void handlePages(string[] args){

@@ -84,6 +84,18 @@ namespace HW1
         }
 
         static void listThreads(int processId){
+            try {
+                Process myProcess = Process.GetProcessById(processId);
+                Console.WriteLine("-------------------------------------------------------------------------------------------------");
+                Console.WriteLine("| Id \t|\t Priority Level \t|\t Current priority |");
+                foreach(ProcessThread t in myProcess.Threads) {
+                    Console.WriteLine("| " + t.Id + "\t|\t\t" + t.PriorityLevel + "\t|\t\t" + t.CurrentPriority + " |");
+                }
+                Console.WriteLine("-------------------------------------------------------------------------------------------------");
+            } catch(Exception e) {
+                Console.WriteLine("Could Not find Process Id " + processId);
+                Console.WriteLine("Error: " + e.ToString());
+            }
 
         }
 

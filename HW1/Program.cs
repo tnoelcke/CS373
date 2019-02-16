@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace HW1
 {
@@ -27,6 +28,18 @@ namespace HW1
                 case "help":
                     printCommands();
                     break;
+                case "p":
+                    handleProcess(split);
+                    break;
+                case "pm":
+                    handleModules(split);
+                    break;
+                case "page":
+                    handlePages(split);
+                    break;
+                case "mr":
+                    handleMemoryRead(split);
+                    break;
                 default:
                     foreach(string item in split){
                         Console.Write("$ " + item + " ");
@@ -45,6 +58,45 @@ namespace HW1
             Console.WriteLine("page <processId>         show all executable pages in a process");
             Console.WriteLine("mr <processId> <#bytes>  read #bytes form a processes memory starting at the lowest address (out put in hex)");
             Console.WriteLine("q                        quit");            
+        }
+
+        static void handleProcess(string[] args){
+            if(args.Length == 1){
+                listProcesses();
+            } else {
+                int processId = 0;
+                if(Int32.TryParse(args[1], out processId)){
+                    listThreads(processId);
+                } else {
+                    Console.WriteLine("p command requires a valid process id, " + args[1] + "is not a valid process id");
+                }
+            }
+        }
+
+        static void listProcesses(){
+            Process[] allProcesses = Process.GetProcesses();
+            Console.WriteLine("-------------------------------------------------------------------------------------------------");
+            Console.WriteLine("| Process Name\t|\tProcessId|");
+            foreach(Process p in allProcesses){
+                Console.WriteLine("| "+ p.ProcessName + "\t|\t" +  p.Id + " |");
+            }
+            Console.WriteLine("-------------------------------------------------------------------------------------------------");
+        }
+
+        static void listThreads(int processId){
+
+        }
+
+        static void handleModules(string[] args){
+
+        }
+
+        static void handlePages(string[] args){
+
+        }
+
+        static void handleMemoryRead(string[] args){
+
         }
     }
 }

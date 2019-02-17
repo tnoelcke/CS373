@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 
 namespace HW1
 {
@@ -193,15 +192,11 @@ namespace HW1
             } else {
                 int processId = 0;
                 if(Int32.TryParse(args[1], out processId)){
-                    listModules(processId);
+                    listProcessMemory(processId);
                 } else {
                     Console.WriteLine("mr command requires a valid process id, " + args[1] + "is not a valid process id");
                 }
             }
-        }
-
-        static void readMenu () {
-
         }
 
         static void listPages(int processId){
@@ -229,6 +224,20 @@ namespace HW1
                 Console.WriteLine("Error: " + e.ToString());
             }
             Console.WriteLine("-------------------------------------------------------------------------------------------------");
+        }
+
+        static void listProcessMemory(int processId){
+            try {
+                Process currentProcess = Process.GetProcessById(processId);
+                byte[] memBuffer = new byte[currentProcess.PagedSystemMemorySize64];
+                IntPtr bytesRead;
+                ReadProcessMemory(currentProcess.Handle, currentProcess.Modules[0].BaseAddress, memBuffer, (int)currentProcess.PagedSystemMemorySize64, out bytesRead);
+                Console.WriteLine(BitConverter.ToString(memBuffer));
+
+            } catch(Exception e) {
+                Console.WriteLine("Could Not find Process Id " + processId);
+                Console.WriteLine("Error: " + e.ToString());
+            }
         }
     }
 }

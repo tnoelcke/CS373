@@ -27,6 +27,7 @@ def main(argv):
   maliciousCount = 0
   actualMalicious = 0
   thresholdTotal = 500
+  error = 0
   
   for record in urldata:
     threshold = 0
@@ -39,10 +40,10 @@ def main(argv):
       threshold = threshold + 300
 
     if record["scheme"] == "https":
-      threshold = threshold - 400
+      threshold = threshold - 300
     
     domainAge = int(record['domain_age_days'])
-    if domainAge < 200:
+    if domainAge < 360:
       threshold += 600
 
     ext = record["file_extension"]
@@ -50,17 +51,17 @@ def main(argv):
     if(ext in ["zip", "php"]):
       threshold = threshold + 400
     elif ext == "exe":
-      threshold = threshold + 1000
-    elif ext in ["aspx", "xml", "js"]:
+      threshold = threshold + 300
+    elif ext in ["aspx", "asp" "xml", "de"]:
       threshold = threshold + 300
     
     if record["alexa_rank"] == None:
-      threshold = threshold + 1100
+      threshold = threshold + 0
     elif record["alexa_rank"] < 100000:
       threshold = threshold - 300
           
     if regexGoogle:
-      threshold += 900
+      threshold += 700
 
     if record["malicious_url"]:
       actualMalicious = actualMalicious + 1
@@ -68,11 +69,13 @@ def main(argv):
     if threshold > thresholdTotal:
       maliciousCount = maliciousCount + 1
       malicious = 1
-    
-    print "%s, %i", record["url"], malicious
+    if malicious != record["malicious_url"]:
+      print record["url"], malicious, record["malicious_url"]
+      error = error + 1
 
-  print "actual malicious: %i", actualMalicious
-  print "identified malicious: %i", maliciousCount
+  print "actual malicious:", actualMalicious
+  print "identified malicious:", maliciousCount
+  print "errors:", error
 
   corpus.close()
 

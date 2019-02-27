@@ -26,7 +26,7 @@ def main(argv):
   numUrls = 0
   maliciousCount = 0
   actualMalicious = 0
-  thresholdTotal = 500
+  thresholdTotal = 400
   error = 0
   
   for record in urldata:
@@ -37,7 +37,7 @@ def main(argv):
     regexIp = re.match("^(\.[0-9][0-9]?[0-9])+$", record["host"])
     
     if regexIp:
-      threshold = threshold + 300
+      threshold = threshold + 500
 
     if record["scheme"] == "https":
       threshold = threshold - 300

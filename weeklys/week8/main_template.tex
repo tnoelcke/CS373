@@ -35,7 +35,7 @@
     \textsc{\Large CS 373}\\[0.5cm]
     \textsc{\Large Winter 2019}\\[0.5cm]
     \HRule \\[0.4cm]
-    { \huge \bfseries Week 1}\\[0.4cm] % Title of your document
+    { \huge \bfseries Week 8}\\[0.4cm] % Title of your document
     \HRule \\[1.5cm]
     \begin{minipage}{0.4\textwidth}
         \begin{flushleft} \large
@@ -52,9 +52,73 @@
 		\end{titlepage}
 		
 		
-		\section{}
+		\section{Overview}
+		    This week we are diving deeper into message security. This also includes Email security. This week we will be talking about various aspects of security in regards to email security. In this write up will talk about topics that I found interesting during the lecture. I will also list out different terms that I learned through out the lectures.\\
+		    
 			
-		\section{}
+		\section{Interesting Lecture Topics}
+		    \subsection{tools}
+		    We will be using databases in this section of the course. When we talk about security we will be using a database. The database it self might differ but in this class we will mostly be using postgres. We will also be using regex expressions. To do this we will use regex coach. This tool will let us play with regular expressions and play around with the regular expressions and get real time results.\\
+		    
+		    \subsection{419 Phishing}
+		    This is type of spam where some one claims to have a lot of money that they would like to give you but you need to send money and your contact info in order to get the million dollars they promise you. As it turns out this is not true. They are not sending you money and are taking your money or contact information. This is so successful and command that it has its own criminal code.\\
+		    
+		    \subsection{Tricking Filters}
+		    Another popular way around the Heuristics filters to place every thing in html elements. An example is that you can place each letter in span tags. This gets around the filters because the filtering system was not designed to look for the words in span tags. Often these emails won't look all that great but the web page that it links you to may look acceptable.\\
+		    
+		    \subsection{Pump and Dump}
+		    This is an attack that uses spam to push up the value of stock and then dump the stock. The idea is that the spammers send out emails claiming to have an insider tip that every one should buy this stock now. Once they have convinced some people to buy the stock the stock price will go up. Then the spammers dump the stock and the people who believed them are stuck with a bad investment. Moral of the story, Don't take investment advice over email from some one you don't know.\\
+		    
+		    \subsection{Spam Bot Nets}
+		    We started looking into spam data in 2009. Initially, There were lots of Canadian pharmacy spam that was very successful. The purps made over 100g per week push fake Viagra. However, After they were shut down because they were very visible, there was a massive serge in virus based spam. This was so that they could rebuild their bot net and come back. We saw a serge some number of years later that reflects this.\\
+		    
+		    \subsection{Defense against spam}
+		    Below is a list of ways that we can attempt to defend against spam:
+		    \begin{itemize}
+		        \item Reputation Driven: IP, Message, URL
+		        \item Common Strings
+		        \item Fixed strings vs variable stings (regular expression)
+		        \item message attributes
+		        \item combos of strings and attributes (meta rules)
+		    \end{itemize}
+		    On top of these methods there are also a number of tools that we might use to investigate and prevent spam. A list of these tools is shown below.\\
+		    
+		    \textbf{Linux:}
+		    \begin{itemize}
+		        \item Dig - Investigation of DNS records
+		        \item WHOIS - Finds information about an IP or Domain registration
+		        \item Grep, SED, AWK - data parsing and manipulation
+		    \end{itemize}
+		    
+		    \textbf{Opensource Databases}
+		    \begin{itemize}
+		        \item PostgreSQL - Best open source database
+		        \item MySQL - Most popular open source database
+		    \end{itemize}
+		    
+		    \textbf{Other Tools:}
+		    \begin{itemize}
+		        \item Regex coach - regular expression tool
+		        \item Trstedsource.org - current reputations according to McAfee.
+		        \item Spamhause.org - Authoritative source of reputation data.
+		    \end{itemize}
+		    
+		    
+		
+		\section{Vocabulary}
+		    \begin{itemize}
+		        \item Spam - This is email that is unwanted email that is not legitimate.\\
+		        \item Ham - This is legitimate email that is from the sources that it claims to be from.\\
+		        \item Spamtrap/Honeypot - An unprotected computer that has no protection on it designed to be attacked to collect samples. Some times this is done with a new domain but some times this is done using a retired email address.\\
+		        \item Botnet - This is a network of connected devices that are infected or running a bot of some kind. These can be used to steal data or to preform DOS attacks.\\
+		        \item Snowshoe spam - This is a technique of spamming that spreads out the load of sending spam to other machines.\\
+		        \item Phishing - Using an email that looks legitimate but actually contains malicious content.\\
+		        \item Spear Phishing - Targeted phishing attack towards a specific person in an organization. This is often an executive or some one of power.\\
+		        \item RBL - Reputation Block List.\\
+		        \item Heuristics - This a method of defining rules that detect suspicious emails or traffic.\\
+		        \item Bayesian (Statistical) - This is another strategy for looking at spam and ham and use tokens to identify mail that is malicious. It then weights the tokens and uses these weights to determine if the message is spam or ham.\\
+		        \item Fingerprinting/Hashing - This is the process of taking a hash of know malicious emails and using that hash to detect future spam.\\
+		    \end{itemize}
 			
 		\section{Bibliography}
 		\bibliography{References}

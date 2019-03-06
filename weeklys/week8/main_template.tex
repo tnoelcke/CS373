@@ -103,6 +103,14 @@
 		        \item Spamhause.org - Authoritative source of reputation data.
 		    \end{itemize}
 		    
+		    \subsection{Research Techniques}
+		    This week we also talked about many different research techniques for looking into different spam. We can research spam by looking at the actual samples or sometime just by looking at the metadata. One common technique is parsing. This is done by collecting key metadata from a sample. This can include source ip, subject, and who it is from. Grouping is another common method by which research is done. Items can be grouped by time stamp source ip, subject, url and many other common values. We can also use an aggregate to look into different samples. This technique takes advantage of counting different occurrences of different words and using this to correlate the likely hood that it is spam vs ham.\\
+		    
+		    \subsection{SMTP conversation}
+		    SMTP is often done using telnet over port 25. This can be done over different ports but often its port 25. Using telnet we can send a message to an IP address. First we have a hand shake and set up the connection. Once the hand shake has been completed we send the data. Once we are done sending the data we will terminate the connection and the message will either be sent or will be queued. It's also important to note that the mail from is just data that can be manipulated. Just because the email is in the from section doesn't mean that email is actually who they say they are. This is one of the key problems with SMTP.\\
+		    
+		    \subsection{Reading Email Headers}
+		    When reading email headers you should start from the bottom up. The pertinent information that you are looking for will be best to read from the bottom up. It will start with a subject and sender. It will then include the actual sender information and a time stamp that shows who actually sent it. This header will also show all of the hops that the email took to get to you. This information can be really useful.\\
 		    
 		
 		\section{Vocabulary}
@@ -119,7 +127,4 @@
 		        \item Bayesian (Statistical) - This is another strategy for looking at spam and ham and use tokens to identify mail that is malicious. It then weights the tokens and uses these weights to determine if the message is spam or ham.\\
 		        \item Fingerprinting/Hashing - This is the process of taking a hash of know malicious emails and using that hash to detect future spam.\\
 		    \end{itemize}
-			
-		\section{Bibliography}
-		\bibliography{References}
 		\end{document}

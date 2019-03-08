@@ -1,0 +1,73 @@
+\documentclass[letterpaper, onecolumn,10pt]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{alltt}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{listings}
+
+\usepackage[TABBOTCAP, tight]{}
+
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{natbib}
+
+\begin{document}
+    \begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    \textsc{\Large Oregon State University}\\[1.5cm]
+    \textsc{\Large CS 373}\\[0.5cm]
+    \textsc{\Large Winter 2019}\\[0.5cm]
+    \HRule \\[0.4cm]
+    { \huge \bfseries Final Project}\\[0.4cm] % Title of your document
+    \HRule \\[1.5cm]
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+        \emph{Author:}\\
+        Thomas Noelcke
+        \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+        \emph{Instructor:} \\
+        D. Kevin McGrath\\
+        \end{flushright}
+    \end{minipage}\\[2cm]
+		\end{titlepage}
+		
+		
+		\section{Overview}
+		In this write up I will talk about the Hack the Box challenge. I will describe how I obtained an invite code and registered. I will then discuss the three challenges that I chose to complete. In each section I will discuss the steps I took to complete the challenge including figures and code samples where applicable.\\
+			
+		\section{Obtaining an Invite Code}
+		To start this project I visited the hack the box website. Once at the website I found the registration site for individuals. The page indicated that I would need to hack the page in order to obtain an invite code. The first thing I did was start examining the sources for the web page. I then noticed that there was file called inviteapi.min.js. This is a minified JS file.\\
+		
+		Using the dev tools on the browser I viewed this file. Initially, It was only five lines long and hard to look at. Using the dev tools I pretty printed the file to make the file more readable. I then noticed that it looked like this file was exporting some functions. The frist thing I tried to do was to evaluate this code in the console. This however gave me an undefined result. However, One of the functions that I noticed that this file was generating was makeInviteCode(). I looked at the arguments for this function using the console and found that this function didn't take any arguments. I called this function and it returned an object much like the object below.\\
+		
+		I noticed that this object had a odd looking string along with a compression algorithm. In this case it was base64. I took this string and decoded it using base64 and found that it was a message. The message stated: "In order to generate the invite code, make a POST request to /api/invite/generate". Next I used post man to make a post request to the end point that it suggested. Again I got a compressed string. I decoded this string also using base64 and was given an activation code kind of like a windows activation code. I entered this into the activation code box and found that it took me to the next screen to register.\\
+		
+	    \subsection{Challenges}
+	        \subsubsection{Challenge 1}
+	        
+	        \subsubsection{Challenge 2}
+	        
+	        \subsubsection{Challenge 3}
+		
+		
+		\end{document}

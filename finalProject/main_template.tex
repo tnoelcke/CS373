@@ -63,11 +63,22 @@
 		I noticed that this object had a odd looking string along with a compression algorithm. In this case it was base64. I took this string and decoded it using base64 and found that it was a message. The message stated: "In order to generate the invite code, make a POST request to /api/invite/generate". Next I used post man to make a post request to the end point that it suggested. Again I got a compressed string. I decoded this string also using base64 and was given an activation code kind of like a windows activation code. I entered this into the activation code box and found that it took me to the next screen to register.\\
 		
 	    \subsection{Challenges}
-	        \subsubsection{Challenge 1}
+	        \subsubsection{Challenge 1: Snake}
+	        The first challenge that I choose was snake. This was a reversing challenge. I choose this challenge first because I am a software developer and write code and debug code quite a bit. I figured that this would be a good starting challenge. This challenge was worth 10 points.\\
 	        
-	        \subsubsection{Challenge 2}
+	        To get started a read through the script and ensured that it wasn't doing any thing malicious. After inspecting the script I ran the script. I noticed that it asked for a user name. The user name was encoded in hex in the program by appending different character variables using hex. Decoding the username was easy.\\
 	        
-	        \subsubsection{Challenge 3}
+	        The password on the other hand was a bit more difficult to decode the password I first had to wade through the many unused variables and determine what was actually being used. Once I determined was was actually being used to create the password variable I decided to debug the program using VScode. Once I did this I was easily able to find the password and submitted the answer to hack the box.\\
+	        
+	        \subsubsection{Challenge 2: Lernaean}
+	        The second challenge that I chose was Lernean. This challenge was worth 20 points and was more challenging than the first one. The goal of this challenge was to break into a site that some one had propped up and get the secret code. Supposedly, the person who set this site up isn't very good with computers.\\
+	        
+	        The first thing I did was go to the sight. The first thing I noticed is that the page said Please don't guess our password. Naturally, The first thing I tried was to guess the password. This however got old and I chose to take a more automated approach to solving this. I then went about setting up hydra on my machine and getting a rather large list of passwords from a github source. With these tools in place I was set up to blast the site with a large combination of passwords. After hitting the site with 65,000 requests I had a match.\\
+	        
+	        Once I had a match I logged in. On logging in I was instantly redirected to another page with the message reading "Oops to slow.". I figured the message must have been in the first page that I visited after logging but wasn't there long enough for the page to render in the browser. I ended up using postman to send the authentication request to the site and was able to see the initial response with out being redirected. This had the hack the box code in the H1 tag.\\
+	        
+	        \subsubsection{Challenge 3: HDC}
+	        
 		
 		
 		\end{document}

@@ -78,7 +78,24 @@
 	        Once I had a match I logged in. On logging in I was instantly redirected to another page with the message reading "Oops to slow.". I figured the message must have been in the first page that I visited after logging but wasn't there long enough for the page to render in the browser. I ended up using postman to send the authentication request to the site and was able to see the initial response with out being redirected. This had the hack the box code in the H1 tag.\\
 	        
 	        \subsubsection{Challenge 3: HDC}
+	        The final challenge I decided to do was HDC. In this challenge the prompt states that they believe there are some individuals who are up to no good using a website. My goal is to find out who is doing the shady business and send them an email using the web page. This challange was worth 30 points.\\
 	        
-		
+	        Upon opening the page I am asked to authenticate. I inspected the web page and noticed that the web page has two scripts in it. A legit looking Jquery file as well as a myscript.js. I looked at the myscript file first which really didn't contain any thing of interest. Next, I looked at the web page to see what was happening on submit of the form. I noticed there was a doProcess() action on that form but no doProcess() function in the myscrip. So I opened the Jquery file and searcher for doProcess() and sure enough there was the login action. Lucky for me the login action also include the user credentials. With the users credentials in hand I logged in.\\
+	        
+	        Once logged in I found an innocuous looking business site that surely didn't look legitimate. I started inspecting the pages for scripts and other clues to what the site might be for. Finally, I started click around to the various different sections of the page and started inspecting the page. Initially, I found nothing of real interest. There was a send email page that seemed a bit odd to me as people usually send emails from an email client. I started looking into this page and found that there was an image on this page. I then looked at this image in another tab to see what the path of the image was. On doing this I found a secret area path that wasn't listed on the home page.\\
+	        
+	        When I went to the index of the secret area path I found two files. A text file and the image I had previously been looking at. I looked at the text file and found a list of emails. One of the things in the prompt was to see if I could find the person responsible for the site was to use the sites functionality to send an email. So I returned to the email page with a list of emails in had and started sending emails. On the last email that I sent rather than refreshing with a blank for the page refreshed with a response and the tag for the Hack the Box Challenge.\\
+	        
+	        \section{Completed challenges}
+	        Below is the list of challanges I have compleated along with the point totals for each challange.\\
+	            \begin{center}
+	                \begin{tabular}{ |c|c| }
+	                     \textbf{Challenge} & \textbf{Points}  \\
+	                     Snake & 10 Points \\
+	                     Lernaean & 20 Points \\
+	                     HDC & 30 Points \\
+	                     \textbf{Total} & \textbf{60 Points}
+	                \end{tabular}
+	            \end{center}
 		
 		\end{document}
